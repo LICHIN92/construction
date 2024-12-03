@@ -67,6 +67,8 @@
     display: inline;
     list-style: none;
     text-transform: capitalize;
+    cursor: pointer;
+    color: #E03A3E;
 }
 .location{
     color: #f50606b2;

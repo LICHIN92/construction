@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contact {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/img/plasterer-hand-rubber-glove-using-wooden-trowel-plastering-cement-brick-wall-background-1-768x512-jpg.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* Ensures the background is centered */
+
+}
+
+.formdiv {
+    width: auto;
+    padding: 4px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, .5);
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+button {
+    text-transform: uppercase;
+    padding: 2px 4px;
+    height: 50px;
+    background-color: #bb0c06;
+    outline: none;
+    border: none;
+    color: white;
+    margin-bottom: 4px;
+    width: 80%;
+
+    
+}
+.buttondiv{
+    display: flex;
+    justify-content: center;
+}
+.contact input {
+    height: 40px;
+    width: 400px;
+    padding-left: 3px;
+    border-radius: 5px;
+    border: none;
+}
+
+textarea {
+    height: 100px;
+    width: 400px;
+    padding-left: 3px;
+    border-radius: 5px;
+}
+
+.contact h2 {
+    /* color: #bb0c06; */
+    color: white;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: whitesmoke;
+    text-underline-offset: 6px;
+    text-decoration-style: double;
+    text-decoration-thickness: 1px;
+
+}
+.labelinput{
+    display: flex;
+    flex-direction: column;
+}
+@media(max-width:400px){
+    .contact input {
+        width: 99vw;
+      
+    }
+    
+    textarea {
+        width: 99vw;
+
+    }
+}

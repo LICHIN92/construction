@@ -1,7 +1,9 @@
 import React from 'react'
 import './footer.css'
 import { MdLocationOn } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 const Footer = () => {
+    const navigate=useNavigate()
     return (
         <div className='footerContainer'>
             <div className='logoo'>
@@ -19,11 +21,11 @@ const Footer = () => {
                 </div>
                 <div className='address2'>
                     <ul>
-                        <li>about</li>
+                        <li onClick={()=>navigate('/about')}>about</li>
                         <li>portfolio</li>
                         <li>Gallery</li>
                         <li>services</li>
-                        <li>contact</li>
+                        <li onClick={()=>navigate('/contact')}>contact</li>
                     </ul>
                 </div>
             </div>

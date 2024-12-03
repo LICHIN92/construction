@@ -17,3 +17,9 @@
 .swiper-pagination-bullet-active {
     background: #081; /* Active dot color */
 }
+
+@media(max-width:500px){
+    .swiper-slide img{
+        height: 60vh;
+    }
+}

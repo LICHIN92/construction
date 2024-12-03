@@ -123,6 +123,7 @@
         border: none;
         cursor: pointer;
         transition: transform 2s ease;
+        color: #E03A3E;
       }
       
       .hamburger-menu:hover {
