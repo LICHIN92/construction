@@ -167,7 +167,13 @@
     
 }
 @media(max-width:1180px){
-    
+    .logooo,.ulli{
+        width: auto;
+        padding-top: 4px;
+    }
+    .logooo{
+        width: 99%;
+    }
     .logooo h6 {
         letter-spacing: .14rem;
        font-size: small;

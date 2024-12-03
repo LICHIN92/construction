@@ -77,18 +77,21 @@ textarea {
     text-decoration-thickness: 1px;
 
 }
+small{
+    color: #ff6862;
+}
 .labelinput{
     display: flex;
     flex-direction: column;
 }
-@media(max-width:400px){
+@media(max-width:420px){
     .contact input {
-        width: 99vw;
+        width: 92vw;
       
     }
     
     textarea {
-        width: 99vw;
+        width: 92vw;
 
     }
 }

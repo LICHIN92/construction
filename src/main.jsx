@@ -33,10 +33,6 @@ const router = createBrowserRouter([
         element:<Gallery/>
       }
     ]
-  },
-  {
-    path:"/cc",
-    element:<Contact/>
   }
 ]);
 

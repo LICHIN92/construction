@@ -1,58 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Contact.css'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
-import {
-    Alert,
-    // AlertIcon,
-    AlertTitle,
-    AlertDescription,
-} from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
+
 
 const Contact = () => {
+const navigate=useNavigate()
     const schema = yup.object({
-        Name: yup.string().matches(/^[a-z.]+/i),
-        Mobile: yup.string().required('Enter Mobile NUmber').matches(/^[0-9]{10}$/),
-        Place: yup.string().required('please  enter your Place'),
-        Msg: yup.string().required('enter your message')
+        Name: yup.string().matches(/^[a-z.]+/i,'Please enter your Name'),
+        Mobile: yup.string().required('Enter Mobile NUmber').matches(/^[0-9]{10}$/,'Mobile number must be exactly 10 digits'),
+        Place: yup.string().required('Please  enter your Place'),
+        Msg: yup.string().required('Enter your message')
     })
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
     const [success, setSuccess] = useState(false); // Track submission success
-    const [error, setError] = useState(''); // Track errors
     const onsubmit = async (data) => {
         console.log(data);
         try {
-            const res = await axios.post('http://localhost:3000', data)
+            const res = await axios.post('https://constructionbe.onrender.com', data)
             console.log(res);
+            alert(res.data+'\n Thank you')
             setSuccess(true)
-            {success && (
-                <Alert
-                    status='success'
-                    variant='subtle'
-                    flexDirection='column'
-                    alignItems='center'
-                    justifyContent='center'
-                    textAlign='center'
-                    height='200px'
-                >
-                    {/* <AlertIcon boxSize='40px' mr={0} /> */}
-                    <AlertTitle mt={4} mb={1} fontSize='lg'>
-                        Application submitted!
-                    </AlertTitle>
-                    <AlertDescription maxWidth='sm'>
-                        Thanks for submitting your application. Our team will get back to you soon.
-                    </AlertDescription>
-                </Alert>
-            )}
-
-
+            navigate('/')
         } catch (error) {
             console.log(error);
 
         }
     }
+   
+     
     return (
         <div className='contact'>
             <div className='formdiv'>
@@ -79,7 +58,7 @@ const Contact = () => {
 
                     </div>
                     <div className='buttondiv'>
-                    <button type='submit'>Send MESSAGE</button>
+                        <button type='submit'>Send MESSAGE</button>
                     </div>
                 </form>
 
