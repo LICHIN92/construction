@@ -34,6 +34,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:"/cc",
+    element:<Contact/>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
