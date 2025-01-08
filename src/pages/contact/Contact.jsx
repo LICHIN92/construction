@@ -22,7 +22,7 @@ const navigate=useNavigate()
         try {
             const res = await axios.post('https://constructionbe.onrender.com', data)
             console.log(res);
-            alert(res.data+'\n Thank you')
+            alert(res.data+'\nThank you')
             setSuccess(true)
             navigate('/')
         } catch (error) {
@@ -58,7 +58,7 @@ const navigate=useNavigate()
 
                     </div>
                     <div className='buttondiv'>
-                        <button type='submit'>Send MESSAGE</button>
+                        <button type='submit'>SEND MESSAGE</button>
                     </div>
                 </form>
 
