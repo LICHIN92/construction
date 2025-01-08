@@ -1,6 +1,7 @@
 import React from 'react'
 import './Home.css'
 import CustomCarousel from '../../Components/cou/CustomCarousel'
+import alling from '../../assets/img/all.webp'
 const Home = () => {
   return (
     <div className='home_container'>
@@ -23,13 +24,12 @@ const Home = () => {
         <div className="welcome">
           <div className='statement'>
             <h4>welcome</h4>
-            <p> &nbsp; Cement plastering is a durable and versatile method for achieving a smooth, strong finish on masonry surfaces. Water is mixed with cement and sand to create a plaster that enhances the strength and aesthetics of walls. Cement plastering combines the processes of base plastering and finishing, making construction efficient and long-lasting.</p>
-         <p> &nbsp; NK construction Company is a small startup plastering company undertakes plastering contracting.
-wheather your site is big or small ,we can do it at low cost.
- Our stringent quality and site project management makes as the first choice for all customers.   </p>
+            
+         <p> &nbsp;
+         NK Construction Company is a small startup specializing in construction and contracting services. Our expertise  includes <strong> <i> Electrical Wiring , Painting, Tile Flooring, Carpentry, Plumbing,</i></strong> and <b> <i>Putty Plastering  </i></b>. With a commitment to using quality materials and skilled craftsmanship, we deliver efficient and durable results for every project. Whether your job is big or small, our dedication to excellence makes us the trusted partner for all your construction requirements.           </p>
           </div>
           <div>
-            <img src="https://www.jkcement.com/wp-content/uploads/2023/09/plasterer-hand-rubber-glove-using-wooden-trowel-plastering-cement-brick-wall-background-1-768x512-jpg.webp" alt="" />
+          <img src={alling} alt="" />
           </div>
         </div>
       </div>

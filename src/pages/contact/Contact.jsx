@@ -5,35 +5,46 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Alertt from '../../Components/alert/Alertt'
 
 
 const Contact = () => {
-const navigate=useNavigate()
+    const navigate = useNavigate()
     const schema = yup.object({
-        Name: yup.string().matches(/^[a-z.]+/i,'Please enter your Name'),
-        Mobile: yup.string().required('Enter Mobile NUmber').matches(/^[0-9]{10}$/,'Mobile number must be exactly 10 digits'),
+        Name: yup.string().matches(/^[a-z.]+/i, 'Please enter your Name'),
+        Mobile: yup.string().required('Enter Mobile NUmber').matches(/^[0-9]{10}$/, 'Mobile number must be exactly 10 digits'),
         Place: yup.string().required('Please  enter your Place'),
-        Msg: yup.string().required('Enter your message')
+        Msg: yup.string().required('Enter your message'),
+        Work: yup.string().required('Please select a type of work')
     })
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
     const [success, setSuccess] = useState(false); // Track submission success
+    const [message, setMessage] = useState('')
     const onsubmit = async (data) => {
         console.log(data);
         try {
             const res = await axios.post('https://constructionbe.onrender.com', data)
             console.log(res);
-            alert(res.data+'\nThank you')
+            // alert(res.data + '\nThank you')
+            setMessage(res.data)
             setSuccess(true)
-            navigate('/')
+            setTimeout(() => {
+                navigate('/')
+            }, 3500)
         } catch (error) {
             console.log(error);
 
         }
     }
-   
-     
+
+
     return (
         <div className='contact'>
+            {
+                success &&
+                <Alertt message={message} />
+
+            }
             <div className='formdiv'>
 
                 <h2>CONTACT US</h2>
@@ -50,6 +61,19 @@ const navigate=useNavigate()
                     <div className='labelinput'>
                         <input type="text" {...register("Place")} placeholder='YOUR PLACE' />
                         {errors.Place && <small>{errors.Place.message}</small>}
+
+                    </div>
+                    <div className="labelinput">
+                        <select {...register("Work")} defaultValue="">
+                            <option value="">Select Work</option>
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="Cement Plastering">Cement Plastering</option>
+                            <option value="Electrical Wiring">Electrical Wiring</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Putty Plastering">Putty Plastering</option>
+                            <option value="Tile">Tile Flooring</option>
+                        </select>
+                        {errors.Work && <small>{errors.Work.message}</small>}
 
                     </div>
                     <div className='labelinput'>
