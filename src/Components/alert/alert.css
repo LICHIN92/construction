@@ -39,6 +39,18 @@
     font-size: 1.5rem;
     padding-top: 10px;
 }
+.err{
+    display: flex;
+    justify-content: center;
+    text-transform: capitalize;
+    height: 30%;
+    background-color: antiquewhite;
+    color: rgb(190, 6, 6);
+    font-weight: 800;
+    font-size: 1.5rem;
+    padding-top: 10px;
+  
+}
 .messagee{
     height: 70%;
     background-color:antiquewhite;

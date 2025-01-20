@@ -1,11 +1,11 @@
 import React from 'react'
 import './alert.css'
-const Alertt = ({ message }) => {
+const Alertt = ({ message,heading ,err}) => {
     return (
         <div className='alertContainer'>
             <div className='messageBoxx'>
-                <div className='messageheader'>
-                    thank you for message
+                <div className={err?"err":'messageheader'}>
+                    {heading}
                 </div>
                 <div className='messagee'>
                     {message}

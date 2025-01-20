@@ -4,6 +4,7 @@ import { MdLocationOn } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 const Footer = () => {
     const navigate=useNavigate()
+    const token=localStorage.getItem('token')
     return (
         <div className='footerContainer'>
             <div className='logoo'>
@@ -22,8 +23,8 @@ const Footer = () => {
                 <div className='address2'>
                     <ul>
                         <li onClick={()=>navigate('/about')}>about</li>
-                        <li>portfolio</li>
-                        <li>Gallery</li>
+                        <li onClick={()=>{token?navigate('/Workers'):navigate('/login')}}>login</li>
+                        <li onClick={()=>navigate('/gallery')}>Gallery</li>
                         <li>services</li>
                         <li onClick={()=>navigate('/contact')}>contact</li>
                     </ul>

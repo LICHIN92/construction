@@ -8,6 +8,7 @@
 .swiper-button-next,
 .swiper-button-prev {
     color: #fff; /* Customize navigation button colors */
+    visibility: hidden;
 }
 
 .swiper-pagination-bullet {

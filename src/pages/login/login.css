@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.loginContainer {
+    max-width: 100vw;
+    min-height: 69vh;
+    padding-top: 15px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dBox {
+    position: relative; /* Ensure label positioning works */
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-block: 5px;
+}
+
+.dBox label {
+    position: absolute;
+    top: .5rem;
+    /* left: rem; */
+    color: rgb(196, 193, 193);
+    pointer-events: none;
+    text-transform: capitalize;
+    font-size: 1rem;
+    transition: 150ms cubic-bezier(.4,0,.2,.1);
+}
+
+.dBox input,.yourJob {
+    outline: none;
+    height: 1.9rem;
+    width: 230px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+input:is(:focus,:valid) ~ label {
+    transform: translate(0, -1.35rem) scale(.8);
+    background-color: white;
+    padding-inline: .3rem;
+    color: darkblue;
+}
+.jobBox{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.jobBox label{
+    position: absolute;
+    color: darkblue;
+    background-color: white;
+    padding-inline: .3rem;
+    top: .5rem;
+    left: rem;
+    pointer-events: none;
+    text-transform: capitalize;
+    font-size: 1rem;
+    transition: 150ms cubic-bezier(.4,0,.2,.1);
+    transform: translate(0, -1.35rem) scale(.8);
+
+}
+.first{
+    color: #da0b0b;
+}
+
+
+@media(max-width:250px){
+    .dBox input,.yourJob{
+        width: 95vw;
+    }
+}

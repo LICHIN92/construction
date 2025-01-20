@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.workPage{
+    height: 90vh;
+    overflow-y: scroll;
+}
+.yes{
+    background-color:green;
+    padding-inline: 2px;
+    cursor: pointer;
+}
+.no{
+    background-color: red;
+    padding-inline: 2px;
+cursor: pointer;
+}

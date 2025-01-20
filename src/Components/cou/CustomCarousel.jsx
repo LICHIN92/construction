@@ -23,6 +23,10 @@ const CustomCarousel = () => {
             <SwiperSlide><img src="https://thearchitectsdiary.com/wp-content/uploads/2024/01/Modern-Mansion-Design-3-9.webp" alt="Slide 2" /></SwiperSlide>
             <SwiperSlide><img src="https://i.pinimg.com/736x/2e/66/df/2e66df4863136a34870e5b2ad38e8eb3.jpg" alt="Slide 3" />
             </SwiperSlide>
+            <SwiperSlide>
+                <img src="https://t4.ftcdn.net/jpg/06/67/59/51/360_F_667595118_KYL0XIz8g6SiCz3w062JYYFW0cnZz9nn.jpg" alt="" />
+
+            </SwiperSlide>
         </Swiper>
     );
 };

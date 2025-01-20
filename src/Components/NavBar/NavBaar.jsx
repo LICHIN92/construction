@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Navrbaar.css'
 import Logo from '../Logomodal/Logo'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearUserData } from '../../redux/userSlice'
 const NavBaar = () => {
   const [status, setStatus] = useState(false)
+  const token=localStorage.getItem('token')
+  const {user}=useSelector(state=>state?.user?.user)
   useEffect(() => {
     // Set the status to true after 500ms
     const timeout = setTimeout(() => {
@@ -15,6 +19,13 @@ const NavBaar = () => {
   }, []);
   const [menuOpen, setMenuOpen] = useState(false);
 const navigate=useNavigate()
+const dispatch=useDispatch()
+const Logout=()=>{
+  localStorage.removeItem('token')
+  dispatch(clearUserData())
+  setMenuOpen(false)
+  navigate('/')
+}
   return (
     <div className='navbarr'>
       {
@@ -41,6 +52,10 @@ const navigate=useNavigate()
           <li tabIndex="0" onClick={()=>{ navigate('/about'); setMenuOpen(false)}}>ABOUT</li>
           <li tabIndex="0"onClick={()=>{ navigate('/gallery'); setMenuOpen(false)}}>GALLERY</li>
           <li tabIndex="0" onClick={()=>{ navigate('/contact'); setMenuOpen(false)}}>CONTACT</li>
+          {token && 
+          <li tabIndex="0" onClick={()=> Logout()}>LOGOUT</li>
+          
+          }
         </ul>
       </div>
     </div>

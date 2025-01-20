@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.ListWorkers{
+    height: 80vh;
+    overflow-y: scroll;
+    padding-top: 2px;
+}

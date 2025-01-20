@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contacted_container {
+    height: 70vh;
+}
+
+.contact_work>span {
+    border-radius: 15px;
+    color: white;
+    padding-inline: 10px;
+    cursor: pointer;
+}
+
+.contact_work > span:hover {
+box-shadow: 2px 2px 5px 2px black;
+}
+
+.contact_work span small {
+    border-radius: 30px;
+    padding-inline: 5px;
+    color: #000000;
+    font-weight: bold;
+    margin-inline: 5px;
+    cursor: pointer;
+}
+
+.contact_work :nth-child(1) {
+    background-color: #9C4E0E;
+
+}
+
+.contact_work span:nth-child(2) {
+    background-color: #034D4E;
+
+}
+
+.contact_work span:nth-child(3) {
+    background-color: #503313;
+
+}
+
+.contact_work span:nth-child(4) {
+    background-color: #676B2E;
+
+}
+
+.contact_work span:nth-child(5) {
+    background-color: #555549;
+
+}
+
+.contact_work span:nth-child(6) {
+    background-color: #034D4E;
+}

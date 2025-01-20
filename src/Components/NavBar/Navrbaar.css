@@ -112,7 +112,7 @@
     display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .navbarr ul li:hover::after {
         width: 20%; /* Expand underline to full width on hover */
     }

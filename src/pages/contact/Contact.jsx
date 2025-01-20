@@ -42,7 +42,7 @@ const Contact = () => {
         <div className='contact'>
             {
                 success &&
-                <Alertt message={message} />
+                <Alertt message={message} heading={'thank you for message'}/>
 
             }
             <div className='formdiv'>
