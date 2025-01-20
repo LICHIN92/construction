@@ -97,11 +97,11 @@ const Login = () => {
                         {errors.Password && <small>{errors.Password.message}</small>}
 
                     </div>
-                    <div className='dBox'>
+                    {/* <div className='dBox'>
                         <input type="submit" value={'Log in'} className='bg-green-600 text-white' />
                         {token && user?.Admin && <p className="text-blue-600 text-center cursor-default" onClick={() => setLogin(true)}>create account</p>
                         }
-                    </div>
+                    </div> */}
 
                 </form>
                 :
@@ -148,10 +148,10 @@ const Login = () => {
                         <div className="dBox">
                             <input type="submit" value={'Submit'} className='bg-green-700 text-white' />
                         </div>
-                        {token && user?.Admin &&  <div className="dBox">
+                        {/* {token && user?.Admin &&  <div className="dBox">
                             <p onClick={() => setLogin(false)} className='cursor-default text-blue-800 text-center text-sm'> Click for Login</p>
 
-                        </div>}
+                        </div>} */}
                     </form>
 
                 </>
