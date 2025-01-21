@@ -43,7 +43,7 @@ const Login = () => {
             setErr(false)
         }, 3000)
     }
-  
+
     const LoginSubmit = async (dataa) => {
         console.log(dataa);
         try {
@@ -84,7 +84,7 @@ const Login = () => {
         <div className='loginContainer'>
             {succes && <Alertt message={msg} heading={err ? "error" : 'Successfully Created!'} err={err} />}
             <h4>Workers Login Page</h4>
-            {!token && !user?.Admin  ?
+            {!token && !user?.Admin ?
                 <form onSubmit={handleSubmit(LoginSubmit)}>
                     <div className='dBox'>
                         <input {...register('UserName')} type="text" />
@@ -97,11 +97,12 @@ const Login = () => {
                         {errors.Password && <small>{errors.Password.message}</small>}
 
                     </div>
-                    {/* <div className='dBox'>
+                    <div className='dBox'>
                         <input type="submit" value={'Log in'} className='bg-green-600 text-white' />
-                        {token && user?.Admin && <p className="text-blue-600 text-center cursor-default" onClick={() => setLogin(true)}>create account</p>
-                        }
-                    </div> */}
+                       {/* {token && user?.Admin &&
+                            <p className="text-blue-600 text-center cursor-default" onClick={() => setLogin(true)}>create account</p>
+                        }*/}
+                    </div>
 
                 </form>
                 :
