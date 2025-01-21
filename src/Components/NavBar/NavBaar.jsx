@@ -51,7 +51,7 @@ const NavBaar = () => {
           <li tabIndex="0" onClick={() => { navigate('/'); setMenuOpen(false) }}>HOME</li>
           <li tabIndex="0" onClick={() => { navigate('/about'); setMenuOpen(false) }}>ABOUT</li>
           <li tabIndex="0" onClick={() => { navigate('/gallery'); setMenuOpen(false) }}>GALLERY</li>
-          {token && user?.Admin && <li tabIndex="0" onClick={() => { navigate('/Workers'); setMenuOpen(false) }}>ADMIN</li>}
+          {token &&  <li tabIndex="0" onClick={() => { navigate('/Workers'); setMenuOpen(false) }}>ADMIN</li>}
 
           {token &&
             <li tabIndex="0" onClick={() => Logout()}>LOGOUT</li>
