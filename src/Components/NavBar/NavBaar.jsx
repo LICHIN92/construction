@@ -50,7 +50,7 @@ const NavBaar = () => {
         <ul className={menuOpen ? 'active' : ''}>
           <li tabIndex="0" onClick={() => { navigate('/'); setMenuOpen(false) }}>HOME</li>
           <li tabIndex="0" onClick={() => { navigate('/about'); setMenuOpen(false) }}>ABOUT</li>
-          <li tabIndex="0" onClick={() => { navigate('/gallery'); setMenuOpen(false) }}>GALLERY</li>
+          <li tabIndex="0" onClick={() => { navigate('/contact'); setMenuOpen(false) }}>CONTACT</li>
           {token &&  <li tabIndex="0" onClick={() => { navigate('/Workers'); setMenuOpen(false) }}>ADMIN</li>}
 
           {token &&
