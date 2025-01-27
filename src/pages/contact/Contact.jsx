@@ -17,13 +17,17 @@ const Contact = () => {
         Msg: yup.string().required('Enter your message'),
         Work: yup.string().required('Please select a type of work')
     })
+    const apiUrl = import.meta.env.VITE_API_URL;
+        
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
     const [success, setSuccess] = useState(false); // Track submission success
     const [message, setMessage] = useState('')
     const onsubmit = async (data) => {
         console.log(data);
         try {
-            const res = await axios.post('https://constructionbe.onrender.com', data)
+            // const res = await axios.post('http://localhost:3000', data)
+            const res = await axios.post(`${apiUrl}`, data)
+
             console.log(res);
             // alert(res.data + '\nThank you')
             setMessage(res.data)

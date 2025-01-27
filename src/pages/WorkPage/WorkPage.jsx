@@ -4,18 +4,22 @@ import { useLocation } from 'react-router-dom'
 import './workpage.css'
 const WorkPage = () => {
     const location = useLocation()
-    const { data: initialData, type } = location.state || {}; // Safely accessing the state object
+    const { data: initialData } = location.state || {}; // Safely accessing the state object
     const [data, setData] = useState([])
     console.log(location.state);
     const work = location.state.work
     const hasFetched = useRef(false)
     const [refresh, setRefresh] = useState(false)
+  const apiUrl = import.meta.env.VITE_API_URL;
+    
     useEffect(() => {
         const workss = async () => {
             if (hasFetched.current) return; // Skip if already fetched
             hasFetched.current = true;
             try {
-                const works = await axios.get(`https://constructionbe.onrender.com/work/${work}`)
+                // const works = await axios.get(`http://localhost:3000/work/${work}`)
+                const works = await axios.get(`${apiUrl}/work/${work}`)
+
                 console.log(works.data)
                 setData(works.data.data)
             } catch (error) {
@@ -27,7 +31,7 @@ const WorkPage = () => {
     }, [refresh, work])
     const contractUpdate = async (id) => {
         try {
-            const update = await axios.patch(`https://constructionbe.onrender.com/contract/${id}`)
+            const update = await axios.patch(`${apiUrl}/contract/${id}`)
             hasFetched.current = false
             setRefresh(!refresh)
         } catch (error) {
@@ -38,7 +42,9 @@ const WorkPage = () => {
     const conpleteUpdate = async (id) => {
 
         try {
-            const update = await axios.patch(`https://constructionbe.onrender.com/complete/${id}`)
+            // const update = await axios.patch(`https://constructionbe.onrender.com/complete/${id}`)
+            const update = await axios.patch(`${apiUrl}/complete/${id}`)
+
             hasFetched.current = false
             setRefresh(!refresh)
         } catch (error) {
@@ -48,7 +54,7 @@ const WorkPage = () => {
     }
     return (
         <div className='workPage '>
-            <h1 className='ms-1 text-orange-600 fw-bolde'>{work}</h1>
+            <h4 className='ms-1 mt-1 text-orange-400 fw-bolde font-bold'>{work}</h4>
             <table>
                 <thead>
                     <th className='w-1'>sl.no</th>

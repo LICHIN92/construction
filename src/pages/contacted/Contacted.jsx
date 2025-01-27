@@ -8,12 +8,16 @@ const Contacted = () => {
     const [contacts, setContact] = useState('')
     const [Cp, setCP] = useState('')
     const navigate = useNavigate()
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
         const fetchData = async () => {
             if (hasFetched.current) return; // Skip if already fetched
             hasFetched.current = true;
             try {
-                const getdata = await axios.get('https://constructionbe.onrender.com/contract')
+                // const getdata = await axios.get('http://localhost:3000/contract')
+                const getdata = await axios.get(`${apiUrl}/contract`)
+
                 setContact(getdata.data.counts)
                 console.log(getdata.data.counts);
             } catch (error) {

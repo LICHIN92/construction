@@ -17,13 +17,17 @@ const Workers = () => {
   console.log(user?.Admin);
   const [values, setValues] = useState('0')
   const dispatch=useDispatch()
+  const apiUrl = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
       const fetchData = async () => {
         if (hasFetched.current) return; // Skip if already fetched
         hasFetched.current = true;
 
         try {
-          const getMsg = await axios.get('https://constructionbe.onrender.com');
+          // const getMsg = await axios.get('http://localhost:3000');
+          const getMsg = await axios.get(`${apiUrl}`);
+
           setMsg(getMsg.data.data);
           // console.log(getMsg.data.data);
         } catch (error) {
@@ -38,7 +42,9 @@ const Workers = () => {
     console.log(id);
 
     try {
-      const updates = await axios.patch(`https://constructionbe.onrender.com/${id}`)
+      // const updates = await axios.patch(`http://localhost:3000/${id}`)
+      const updates = await axios.patch(`${apiUrl}/${id}`)
+
       // console.log(updates);
       hasFetched.current = false;
 
@@ -53,7 +59,9 @@ const Workers = () => {
     console.log(id);
 
     try {
-      const deleteMessage = await axios.delete(`https://constructionbe.onrender.com/${id}`)
+      // const deleteMessage = await axios.delete(`http://localhost:3000/${id}`)
+      const deleteMessage = await axios.delete(`${apiUrl}/${id}`)
+
       console.log(deleteMessage.data);
       hasFetched.current = false;
 

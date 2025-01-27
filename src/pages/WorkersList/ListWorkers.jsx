@@ -6,10 +6,14 @@ const ListWorkers = () => {
     const [work, setWork] = useState('')
     const hasFetched = useRef(false)
     const [list, SetList] = useState([])
+  const apiUrl = import.meta.env.VITE_API_URL;
+
     const findWork = async (work) => {
         setWork(work)
         try {
-            const wokers = await axios.get(`https://constructionbe.onrender.com/workersjob/${work}`)
+            // const wokers = await axios.get(`http://localhost:3000/workersjob/${work}`)
+            const wokers = await axios.get(`${apiUrl}/workersjob/${work}`)
+
             SetList(wokers.data)
             console.log(wokers.data);
 
@@ -23,7 +27,9 @@ const ListWorkers = () => {
             if (hasFetched.current) return
             hasFetched.current = true
             try {
-                const data = await axios.get('https://constructionbe.onrender.com/workers')
+                // const data = await axios.get('http://localhost:3000/workers')
+                const data = await axios.get(`${apiUrl}/workers`)
+
                 setContacts(data.data.jobCounts)
                 console.log(data.data);
                 // hasFetched.current=true
@@ -38,7 +44,7 @@ const ListWorkers = () => {
         <div className='ListWorkers'>
             <h4 className='ms-1 font-bold'>Workers List</h4>
 
-            <dvi className="flex flex-wrap gap-3 mt-2 contact_work">
+            <dvi className="flex flex-wrap gap-3 mt-2 ps-2 contact_work">
                 <span onClick={() => findWork('Carpenter')}>Carpenter
                     <small className='bg-white'>{contacts.Carpenter ? contacts.Carpenter : "0"}</small>
                 </span>
@@ -58,7 +64,7 @@ const ListWorkers = () => {
                 <span onClick={() => findWork('Electrician')}>Electricain
                     <small className='bg-white'>{contacts.Electrician>0 ? contacts.Electrician+1 : "0"}</small>
                 </span>
-                <span onClick={() => findWork('Tile')}>Tile
+                <span onClick={() => findWork('Tiler')}>Tile
                     <small className='bg-white'>{contacts.Tile ? contacts.Tile : "0"}</small>
                 </span>
             </dvi>

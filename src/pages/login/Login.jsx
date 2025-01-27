@@ -17,7 +17,9 @@ const Login = () => {
     const { user } = useSelector(state => state.user.user)
 
     console.log(user);
-
+    const apiUrl = import.meta.env.VITE_API_URL;
+    // console.log(apiUrl);
+    
     const SignupSchema = yup.object({
         FullName: yup.string().matches(/^[a-z. ]+$/i, "Full Name is required").required(),
         Mobile: yup.string().matches(/^[0-9]{10}$/, 'Mobile is required'),
@@ -32,7 +34,7 @@ const Login = () => {
     const [err, setErr] = useState(false)
     const [msg, setMsg] = useState('')
     const navigate = useNavigate()
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(login ? SignupSchema : LoginSchema) })
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(user?.Admin ?SignupSchema: LoginSchema) })
 
     const showMsg = () => {
         setErr(true)
@@ -47,7 +49,9 @@ const Login = () => {
     const LoginSubmit = async (dataa) => {
         console.log(dataa);
         try {
-            const res = await axios.post('https://constructionbe.onrender.com/login', dataa)
+            // const res = await axios.post('https://constructionbe.onrender.com/login', dataa)
+            const res = await axios.post(`${apiUrl}/login`, dataa)
+
             console.log(res.data.token)
             localStorage.setItem('token', res.data.token)
 
@@ -63,7 +67,9 @@ const Login = () => {
     const SignupSubmit = async (data) => {
         console.log(data)
         try {
-            const res = await axios.post('https://constructionbe.onrender.com/signup', data)
+            // const res = await axios.post('https://constructionbe.onrender.com/signup', data)
+            const res = await axios.post(`${apiUrl}/signup`, data)
+
             setSuccess(true)
             console.log(res.data);
             setMsg(res.data)
@@ -99,7 +105,7 @@ const Login = () => {
                     </div>
                     <div className='dBox'>
                         <input type="submit" value={'Log in'} className='bg-green-600 text-white' />
-                       {/* {token && user?.Admin &&
+                        {/* {token && user?.Admin &&
                             <p className="text-blue-600 text-center cursor-default" onClick={() => setLogin(true)}>create account</p>
                         }*/}
                     </div>
