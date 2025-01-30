@@ -14,8 +14,8 @@ const Workers = () => {
   const { user } = useSelector(state => state.user?.user)
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
-  console.log(user?.Admin);
-  const [values, setValues] = useState('0')
+  // console.log(user?.Admin);
+  const [values, setValues] = useState(false)
   const dispatch=useDispatch()
   const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -62,7 +62,7 @@ const Workers = () => {
       // const deleteMessage = await axios.delete(`http://localhost:3000/${id}`)
       const deleteMessage = await axios.delete(`${apiUrl}/${id}`)
 
-      console.log(deleteMessage.data);
+      // console.log(deleteMessage.data);
       hasFetched.current = false;
 
       setRefresh((prev) => !prev)
@@ -83,7 +83,7 @@ const Workers = () => {
     <div className="workers_container">
       <div className='flex  justify-between align-items-center  sm:fs-2 md:px-2'>
         <div className='flex flex-col-reverse gap-1 w-35 pt-1  m:justify-around'>
-          {user?.Admin && <span className=' text-green-200 cursor-default px-1 rounded-full ms-1 bg-gray-500' onClick={() => setValues('1')}>Contact</span>}
+          {user?.Admin && <span className=' text-green-200 cursor-default px-1 rounded-full ms-1 bg-gray-500' onClick={() => setValues(!values)}>Contact</span>}
           {user?.Admin && <span className=' text-green-600 cursor-default px-1 rounded-full ms-1 bg-gray-600' onClick={() => {navigate('/WorkersList'),setValues('')}}>Workers</span>}
 
           <span className=' text-blue-600  ms-1 bg-gray-800 px-1 cursor-default rounded-full' onClick={() => navigate('/contracted')}>Contracted</span>
@@ -95,7 +95,7 @@ const Workers = () => {
       </div>
 
       {msg.length > 0 ? (
-        (values == '1' && <table>
+        (values && <table>
           <thead>
             <tr>
               <th className="table_sl">Sl. No</th>

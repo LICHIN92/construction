@@ -19,7 +19,7 @@ const Contacted = () => {
                 const getdata = await axios.get(`${apiUrl}/contract`)
 
                 setContact(getdata.data.counts)
-                console.log(getdata.data.counts);
+                // console.log(getdata.data.counts);
             } catch (error) {
                 console.log(error);
 
@@ -63,6 +63,9 @@ const Contacted = () => {
                 </span>
                 <span onClick={() => findWork('Tile')}>Tile
                     <small className='bg-white'>{contacts.Tile ? contacts.Tile : "0"}</small>
+                </span>
+                <span onClick={() => findWork('Paint')}>Paint
+                    <small className='bg-white'>{contacts.Paint ? contacts.Paint : "0"}</small>
                 </span>
             </dvi>
         </div>

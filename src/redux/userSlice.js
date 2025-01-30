@@ -5,7 +5,7 @@ let USER=null
 try {
     if (token) {
         const decodedToken = jwtDecode(token)
-        console.log(decodedToken);
+        // console.log(decodedToken);
         USER=decodedToken
     }
 } catch (error) {

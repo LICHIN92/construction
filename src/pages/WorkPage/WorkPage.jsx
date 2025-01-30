@@ -6,7 +6,7 @@ const WorkPage = () => {
     const location = useLocation()
     const { data: initialData } = location.state || {}; // Safely accessing the state object
     const [data, setData] = useState([])
-    console.log(location.state);
+    // console.log(location.state);
     const work = location.state.work
     const hasFetched = useRef(false)
     const [refresh, setRefresh] = useState(false)
@@ -20,7 +20,7 @@ const WorkPage = () => {
                 // const works = await axios.get(`http://localhost:3000/work/${work}`)
                 const works = await axios.get(`${apiUrl}/work/${work}`)
 
-                console.log(works.data)
+                // console.log(works.data)
                 setData(works.data.data)
             } catch (error) {
                 console.log(error);

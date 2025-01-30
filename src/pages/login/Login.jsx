@@ -16,7 +16,7 @@ const Login = () => {
     const token = localStorage.getItem('token')
     const { user } = useSelector(state => state.user.user)
 
-    console.log(user);
+    // console.log(user);
     const apiUrl = import.meta.env.VITE_API_URL;
     // console.log(apiUrl);
     
@@ -47,12 +47,12 @@ const Login = () => {
     }
 
     const LoginSubmit = async (dataa) => {
-        console.log(dataa);
+        // console.log(dataa);
         try {
             // const res = await axios.post('https://constructionbe.onrender.com/login', dataa)
             const res = await axios.post(`${apiUrl}/login`, dataa)
 
-            console.log(res.data.token)
+            // console.log(res.data.token)
             localStorage.setItem('token', res.data.token)
 
             navigate('/Workers')
@@ -65,13 +65,13 @@ const Login = () => {
     }
 
     const SignupSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         try {
             // const res = await axios.post('https://constructionbe.onrender.com/signup', data)
             const res = await axios.post(`${apiUrl}/signup`, data)
 
             setSuccess(true)
-            console.log(res.data);
+            // console.log(res.data);
             setMsg(res.data)
 
             setTimeout(() => {

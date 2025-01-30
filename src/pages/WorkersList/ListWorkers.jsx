@@ -15,7 +15,7 @@ const ListWorkers = () => {
             const wokers = await axios.get(`${apiUrl}/workersjob/${work}`)
 
             SetList(wokers.data)
-            console.log(wokers.data);
+            // console.log(wokers.data);
 
         } catch (error) {
             console.log(error);
@@ -31,7 +31,7 @@ const ListWorkers = () => {
                 const data = await axios.get(`${apiUrl}/workers`)
 
                 setContacts(data.data.jobCounts)
-                console.log(data.data);
+                // console.log(data.data);
                 // hasFetched.current=true
 
             } catch (error) {
@@ -67,6 +67,9 @@ const ListWorkers = () => {
                 <span onClick={() => findWork('Tiler')}>Tile
                     <small className='bg-white'>{contacts.Tile ? contacts.Tile : "0"}</small>
                 </span>
+                <span onClick={() => findWork('Paint')} className='bg-amber-950'>Painter
+                    <small className='bg-white'>{contacts.Paint ? contacts.Paint : "0"}</small>
+                </span>
             </dvi>
             {work ?
                 <div className='pt-3 ps-2'>
@@ -85,7 +88,7 @@ const ListWorkers = () => {
                             <tbody>
 
                                 {list.map((worker, index) =>
-                                    <tr>
+                                    <tr key={index}>
                                         <td className='w-1'>{index + 1}</td>
                                         <td>{worker.FullName}</td>
                                         <td>{worker.Mobile}</td>

@@ -23,12 +23,12 @@ const Contact = () => {
     const [success, setSuccess] = useState(false); // Track submission success
     const [message, setMessage] = useState('')
     const onsubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         try {
             // const res = await axios.post('http://localhost:3000', data)
             const res = await axios.post(`${apiUrl}`, data)
 
-            console.log(res);
+            // console.log(res);
             // alert(res.data + '\nThank you')
             setMessage(res.data)
             setSuccess(true)
@@ -76,6 +76,8 @@ const Contact = () => {
                             <option value="Plumbing">Plumbing</option>
                             <option value="Putty Plastering">Putty Plastering</option>
                             <option value="Tile">Tile Flooring</option>
+                            <option value="Paint">Paint Work</option>
+
                         </select>
                         {errors.Work && <small>{errors.Work.message}</small>}
 
