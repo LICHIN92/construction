@@ -1,30 +1,88 @@
-import React from 'react'
-import './gallery.css'
-
+import React, { useState, useEffect } from "react";
+import "./gallery.css";
+import AddImage from "../../Components/addImage/AddImage";
+import axios from "axios";
+import $ from "jquery";
+import close from '../../assets/img/close.svg'
+import { useSelector } from "react-redux";
 const Gallery = () => {
+  const [openImage, setImageOpen] = useState(false);
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const [pics, setPics] = useState([]);
+  const token = localStorage.getItem('token')
+  const [refresh, seteRfresh] = useState(false)
+  const { user } = useSelector(state => state.user?.user)
+  console.log(user);
+
+  useEffect(() => {
+    const getpics = async () => {
+      try {
+        const getpic = await axios.get(`${apiUrl}/getpic`);
+        setPics(getpic.data);
+        console.log(getpic.data);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+    getpics();
+  }, [apiUrl, refresh, openImage]);
+
+  useEffect(() => {
+    $('img').hover(function () {
+      $('img').css('border-radius', '10px')
+      // $('img').css('border-radius', '10px')
+      $(this).siblings(".overlay").css("visibility", "visible");
+
+    },
+      function () {
+        // $(this).css("border-radius", "0px"); // Reset on hover out
+        $(this).siblings(".overlay").css("visibility", "hidden");
+      }
+
+    )
+  }, [])
+  const deleteImg = async (id) => {
+    alert(id)
+    try {
+      const deletePic = await axios.delete(`${apiUrl}/delete/${id}`
+        , {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      )
+      seteRfresh(!refresh)
+    } catch (error) {
+
+    }
+  }
   return (
-    <div className='galleryContainer'>
-        <div className='galleryHead'>
-        <h3>Our Happy Clients</h3>
-
-        </div>
-        <div className="gallery">
-        <img src="https://img.freepik.com/premium-photo/indian-family-standing-their-front-yard-with-their-new-house_1110231-158.jpg" alt="" />
-
-            <img src="https://images.unsplash.com/photo-1660915076159-def99bbbc1bb?w=500&auto=format&fit=crop&q=60" alt="" />
-           
-            <img src="https://images.unsplash.com/photo-1578496780896-7081cc23c111?w=500&auto=format&fit=crop&q=90" alt="" />
-            <img src="https://media.istockphoto.com/id/1178764204/photo/portrait-of-family-standing-outside-home-stock-photo.jpg?s=612x612&w=0&k=20&c=WQUmiRMWT_eXf0VGQhJ371DffTYFMSmBNuXK9p0Za_g=" alt="" />
-            <img src="https://www.shutterstock.com/image-photo/closeup-indian-asian-multigenerational-family-260nw-2540296609.jpg" alt="" />
-            <img src="https://plus.unsplash.com/premium_photo-1724659217647-4bfdba75e5a6?w=500&auto=format&fit=crop&q=60" alt="" />
-           
-            <img src="https://t4.ftcdn.net/jpg/06/67/59/51/360_F_667595118_KYL0XIz8g6SiCz3w062JYYFW0cnZz9nn.jpg" alt="" />
-            <img src="https://t3.ftcdn.net/jpg/09/49/49/34/360_F_949493498_nCxBjNm6v5pTtMBb5b30aUSwMBG4Jd9n.jpg" alt="" />
-            <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=1470&" alt="" />
-       
-        </div>
+    <div className="galleryContainer">
+      {openImage && user.Admin && <AddImage setImageOpen={setImageOpen} />}
+      <div className="galleryHead">
+        <h3>Our Happy Clients & Completed Works</h3>
+        {token && <span onClick={() => setImageOpen(true)}>Add Images</span>}
+      </div>
+      <div className="gallery">
+        {pics.map((file, index) => (
+          <div className="relative" key={index}>
+            <img
+              className="workimg"
+              src={file.pics[0] || "https://via.placeholder.com/150"}
+              alt={`Client ${index}`}
+            />
+            <div className="overlay ">
+              <span className="">place: {file.place}</span>
+            </div>
+            <span className="text-white">work : {file.work}</span>
+            {token &&
+              <img className="closeq" src={close} alt="" onClick={() => { deleteImg(file._id) }} />
+            }
+          </div>
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

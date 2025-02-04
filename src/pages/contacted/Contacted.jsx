@@ -14,9 +14,14 @@ const Contacted = () => {
         const fetchData = async () => {
             if (hasFetched.current) return; // Skip if already fetched
             hasFetched.current = true;
+            const token=localStorage.getItem('token')
             try {
                 // const getdata = await axios.get('http://localhost:3000/contract')
-                const getdata = await axios.get(`${apiUrl}/contract`)
+                const getdata = await axios.get(`${apiUrl}/contract`,{
+                    headers:{
+                        'Authorization':`Bearer ${token}`
+                    }
+                })
 
                 setContact(getdata.data.counts)
                 // console.log(getdata.data.counts);

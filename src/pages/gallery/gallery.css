@@ -8,7 +8,7 @@
 
 .galleryContainer {
     max-width: 100vw;
-    max-height: 90vh;
+    height:85vh;
     padding-top: 10px;
     overflow-y: scroll;
     font-family: 'Noto Sans', sans-serif;
@@ -21,13 +21,43 @@
     font-style: italic;
     color: rgb(53, 167, 49);
 }
-.gallery{
+
+.gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+
 }
-.gallery img{
-    width: 300px;
+
+.gallery img {
+    width: 400px;
     height: 200px;
+    border: 1px solid black;
+    /* border-radius: ; */
+}
+
+.gallery span {
+    position: relative;
+    top: -25px;
+    background: rgb(0, 0, 0, .5);
+    text-transform: capitalize;
+    padding-inline: 5px;
+}
+
+.overlay {
+    position: relative;
+    /* background-color: rgb(0, 0, 0,.1); */
+    color: white;
+}
+.closeq{
+    position: absolute;
+    z-index: 1;
+    top: 2px;
+    height: 30px !important;
+    width: 25px !important;
+    border: 1px solid white;
+    border-radius: 0px;
+    left: 5px;
+    background-color: rgb(65, 52, 37);
 }
