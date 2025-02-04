@@ -12,14 +12,14 @@ const Gallery = () => {
   const token = localStorage.getItem('token')
   const [refresh, seteRfresh] = useState(false)
   const { user } = useSelector(state => state.user?.user)
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     const getpics = async () => {
       try {
         const getpic = await axios.get(`${apiUrl}/getpic`);
         setPics(getpic.data);
-        console.log(getpic.data);
+        // console.log(getpic.data);
       } catch (error) {
         console.error("Error fetching images:", error);
       }

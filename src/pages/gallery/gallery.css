@@ -61,3 +61,11 @@
     left: 5px;
     background-color: rgb(65, 52, 37);
 }
+
+@media(max-width:410px){
+    .gallery img{
+        width: 95vw;
+        height: 150px;
+        /* background-color: blueviolet; */
+    }
+}
