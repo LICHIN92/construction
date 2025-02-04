@@ -58,7 +58,7 @@ const Gallery = () => {
   }
   return (
     <div className="galleryContainer">
-      {openImage && user.Admin && <AddImage setImageOpen={setImageOpen} />}
+      {openImage && user?.Admin && <AddImage setImageOpen={setImageOpen} />}
       <div className="galleryHead">
         <h3>Our Happy Clients & Completed Works</h3>
         {token && <span onClick={() => setImageOpen(true)}>Add Images</span>}
