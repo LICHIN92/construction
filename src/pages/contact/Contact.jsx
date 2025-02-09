@@ -6,7 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Alertt from '../../Components/alert/Alertt'
-
+import { CiMobile1 } from 'react-icons/ci'
+import { MdOutlineMailOutline } from "react-icons/md";
 
 const Contact = () => {
     const navigate = useNavigate()
@@ -18,7 +19,7 @@ const Contact = () => {
         Work: yup.string().required('Please select a type of work')
     })
     const apiUrl = import.meta.env.VITE_API_URL;
-        
+
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
     const [success, setSuccess] = useState(false); // Track submission success
     const [message, setMessage] = useState('')
@@ -44,9 +45,14 @@ const Contact = () => {
 
     return (
         <div className='contact'>
+            <div className='enquiries'>
+                {/* <span className='text-white'>Enquiry</span> */}
+                <span className='flex items-center gap-1'> <CiMobile1 className='' /> <span>+918086200861</span></span>
+                <span className='flex items-center gap-1'><MdOutlineMailOutline /> lichinchandran143@gmail.com</span>
+            </div>
             {
                 success &&
-                <Alertt message={message} heading={'thank you for message'}/>
+                <Alertt message={message} heading={'thank you for message'} />
 
             }
             <div className='formdiv'>

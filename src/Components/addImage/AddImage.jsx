@@ -76,6 +76,7 @@ const AddImage = ({ setImageOpen }) => {
             }, 2500)
         } catch (error) {
             console.error('Upload failed', error);
+            setWait(false)
         }
     };
 

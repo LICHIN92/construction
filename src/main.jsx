@@ -18,6 +18,7 @@ import LoginProtect from './Components/ProtectedRoutes/LoginProtect.jsx';
 import Contacted from './pages/contacted/Contacted.jsx';
 import WorkPage from './pages/WorkPage/WorkPage.jsx';
 import ListWorkers from './pages/WorkersList/ListWorkers.jsx';
+import Service from './pages/services/Service.jsx';
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
           </AuthProtect>
         )
       },
+      {
+        path:'/service',
+        element:<Service/>
+      }
     ]
   }
 ]);

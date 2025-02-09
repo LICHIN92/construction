@@ -2,12 +2,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './work.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { CiLogout } from 'react-icons/ci';
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
 import { useNavigate } from 'react-router-dom';
 import { clearUserData } from '../../redux/userSlice';
 
 
 const Workers = () => {
+  const doc = new jsPDF()
   const [msg, setMsg] = useState([]);
   const hasFetched = useRef(false); // Track if the API call has been made
   const [refresh, setRefresh] = useState(false)
@@ -16,27 +18,49 @@ const Workers = () => {
   const navigate = useNavigate()
   // console.log(user?.Admin);
   const [values, setValues] = useState(false)
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   const apiUrl = import.meta.env.VITE_API_URL;
 
-    useEffect(() => {
-      const fetchData = async () => {
-        if (hasFetched.current) return; // Skip if already fetched
-        hasFetched.current = true;
+  useEffect(() => {
+    const fetchData = async () => {
+      if (hasFetched.current) return; // Skip if already fetched
+      hasFetched.current = true;
 
-        try {
-          // const getMsg = await axios.get('http://localhost:3000');
-          const getMsg = await axios.get(`${apiUrl}`);
+      try {
+        // const getMsg = await axios.get('http://localhost:3000');
+        const getMsg = await axios.get(`${apiUrl}`);
 
-          setMsg(getMsg.data.data);
-          // console.log(getMsg.data.data);
-        } catch (error) {
-          // console.error(error);
-        }
-      };
+        setMsg(getMsg.data.data);
+        // console.log(getMsg.data.data);
+      } catch (error) {
+        // console.error(error);
+      }
+    };
 
-      fetchData();
-    }, [refresh]);
+    fetchData();
+  }, [refresh]);
+  // Function to generate PDF
+  const downloadPDF = () => {
+    const doc = new jsPDF();
+
+    doc.text("NK Constructions-Works List", 14, 10);
+
+    autoTable(doc, {
+      startY: 20,
+      head: [["Sl. No", "Name", "Mobile", "Place", "Message", "Work", "Contacted"]],
+      body: msg.map((data, index) => [
+        index + 1,
+        data.Name,
+        data.Mobile,
+        data.Place,
+        data.Message,
+        data.Work,
+        data.Connect ? "Yes" : "No",
+      ]),
+    });
+
+    doc.save("works_list.pdf");
+  };
 
   const updateContact = async (id) => {
     console.log(id);
@@ -84,7 +108,7 @@ const Workers = () => {
       <div className='flex  justify-between align-items-center  sm:fs-2 md:px-2'>
         <div className='flex flex-col-reverse gap-1 w-35 pt-1  m:justify-around'>
           {user?.Admin && <span className=' text-green-200 cursor-default px-1 rounded-full ms-1 bg-gray-500' onClick={() => setValues(!values)}>Contact</span>}
-          {user?.Admin && <span className=' text-green-600 cursor-default px-1 rounded-full ms-1 bg-gray-600' onClick={() => {navigate('/WorkersList'),setValues('')}}>Workers</span>}
+          {user?.Admin && <span className=' text-green-600 cursor-default px-1 rounded-full ms-1 bg-gray-600' onClick={() => { navigate('/WorkersList'), setValues('') }}>Workers</span>}
 
           <span className=' text-blue-600  ms-1 bg-gray-800 px-1 cursor-default rounded-full' onClick={() => navigate('/contracted')}>Contracted</span>
 
@@ -93,7 +117,13 @@ const Workers = () => {
           <CiLogout /> W
         </span>} */}
       </div>
-
+      {/* Download PDF Button */}
+      {values && (msg.length > 0 && user?.Admin && (
+        <button onClick={downloadPDF} className="bg-blue-500 text-white px-4 py-2 w-auto ms-3 rounded-md my-2">
+          Download PDF
+        </button>
+      ))
+      }
       {msg.length > 0 ? (
         (values && <table>
           <thead>

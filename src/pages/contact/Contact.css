@@ -14,7 +14,7 @@
     background-size: cover;
     background-position: center;
     /* Ensures the background is centered */
-
+    position: relative;
 }
 
 .formdiv {
@@ -45,13 +45,16 @@ button {
     margin-bottom: 4px;
     width: 80%;
 
-    
+
 }
-.buttondiv{
+
+.buttondiv {
     display: flex;
     justify-content: center;
 }
-.contact input,select {
+
+.contact input,
+select {
     height: 40px;
     width: 400px;
     padding-left: 3px;
@@ -77,19 +80,33 @@ textarea {
     text-decoration-thickness: 1px;
 
 }
-small{
+
+small {
     color: #ff6862;
 }
-.labelinput{
+
+.labelinput {
     display: flex;
     flex-direction: column;
 }
-@media(max-width:420px){
-    .contact input,select {
+
+.enquiries {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    /* background-color: rgb(0, 0, 0,.3); */
+    width: 20vw;
+    padding: 5px;
+}
+
+@media(max-width:420px) {
+
+    .contact input,
+    select {
         width: 92vw;
-      
+
     }
-    
+
     textarea {
         width: 92vw;
 
