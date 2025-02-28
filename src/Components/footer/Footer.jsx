@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='footerContainer'>
             <div className='logoo'>
                 <h1>NK Construction</h1>
-                <h6>construction company</h6>
+                <h6>construction solution</h6>
             </div>
             <div className='address'>
                 <div className=' address1'>

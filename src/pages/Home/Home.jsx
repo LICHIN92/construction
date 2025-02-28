@@ -27,7 +27,7 @@ const Home = () => {
     setTimeout(() => {
       timeFun()
 
-    },4800)
+    },3500)
   }, []);
   return (
     <div className='home_container'>
@@ -52,7 +52,7 @@ const Home = () => {
             <h4>welcome</h4>
 
             <p> &nbsp;
-              NK Construction Company is a small startup specializing in construction and contracting services. Our expertise  includes <strong> <i> Electrical Wiring , Painting, Tile Flooring, Carpentry, Plumbing,</i></strong> and <b> <i>Putty Plastering  </i></b>. With a commitment to using quality materials and skilled craftsmanship, we deliver efficient and durable results for every project. Whether your job is big or small, our dedication to excellence makes us the trusted partner for all your construction requirements.           </p>
+              NK Construction solution is a small startup specializing in construction and contracting services. Our expertise  includes <strong> <i> Electrical Wiring , Painting, Tile Flooring, Carpentry, Plumbing,</i></strong> and <b> <i>Putty Plastering  </i></b>. With a commitment to using quality materials and skilled craftsmanship, we deliver efficient and durable results for every project. Whether your job is big or small, our dedication to excellence makes us the trusted partner for all your construction requirements.           </p>
           </div>
           <div>
             <img src={alling} alt="" />

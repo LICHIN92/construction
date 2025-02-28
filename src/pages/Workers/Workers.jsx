@@ -6,6 +6,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { useNavigate } from 'react-router-dom';
 import { clearUserData } from '../../redux/userSlice';
+import Modall from '../../Components/modal/modall';
 
 
 const Workers = () => {
@@ -18,6 +19,8 @@ const Workers = () => {
   const navigate = useNavigate()
   // console.log(user?.Admin);
   const [values, setValues] = useState(false)
+  const [deleteing,SetDelete]=useState(false)
+  const [deleteId,setId]=useState('')
   const dispatch = useDispatch()
   const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -105,6 +108,9 @@ const Workers = () => {
   }
   return (
     <div className="workers_container">
+      {deleteing &&
+       <Modall msg={'Are you sure?'} title={'Delete Confirmation'} setDelete={SetDelete} Deletemsg={DeleteMsg} id={deleteId}
+      />}
       <div className='flex  justify-between align-items-center  sm:fs-2 md:px-2'>
         <div className='flex flex-col-reverse gap-1 w-35 pt-1  m:justify-around'>
           {user?.Admin && <span className=' text-green-200 cursor-default px-1 rounded-full ms-1 bg-gray-500' onClick={() => setValues(!values)}>Contact</span>}
@@ -164,8 +170,12 @@ const Workers = () => {
                       {data.Connect ? 'Yes' : 'No'}
                     </span>
                     {data.Connect ?
-                      <span className='bg-red-600 text-white text-center  ms-2 p-0 '
-                        onClick={() => { DeleteMsg(data._id) }}
+                      <span className='bg-red-600 text-white text-center  ms-2 p-0 cursor-default'
+                        onClick={() => {
+                          //  DeleteMsg(data._id) 
+                          setId(data._id)
+                          SetDelete(true)
+                          }}
                       >
                         Delete
                       </span>

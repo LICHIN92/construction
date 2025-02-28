@@ -10,8 +10,8 @@ const WorkPage = () => {
     const work = location.state.work
     const hasFetched = useRef(false)
     const [refresh, setRefresh] = useState(false)
-  const apiUrl = import.meta.env.VITE_API_URL;
-    
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
         const workss = async () => {
             if (hasFetched.current) return; // Skip if already fetched
@@ -81,7 +81,8 @@ const WorkPage = () => {
                                         className={item.Completed ? "yes" : "no"}
                                     >
                                         {item.Completed ? "Yes" : "No"}
-                                    </span>                                      </td>
+                                    </span>
+                                </td>
                             </tr>
                         ))
                     ) : (

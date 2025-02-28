@@ -6,7 +6,7 @@ const Logo = () => {
       <div className='logocontainer'>
         <h2>          NK Construnction        </h2>
 
-        <h6>          construction company        </h6>
+        <h6>          construction solution        </h6>
       </div>
     </div>
   )

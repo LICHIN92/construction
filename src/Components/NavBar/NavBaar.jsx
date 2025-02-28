@@ -35,7 +35,7 @@ const NavBaar = () => {
       <div className='logooo'>
 
         <h3>NK Construction</h3>
-        <h6>construction company</h6>
+        <h6>construction solution</h6>
       </div>
       <div className='ulli'>
         <button
@@ -51,7 +51,7 @@ const NavBaar = () => {
           <li tabIndex="0" onClick={() => { navigate('/'); setMenuOpen(false) }}>HOME</li>
           <li tabIndex="0" onClick={() => { navigate('/about'); setMenuOpen(false) }}>ABOUT</li>
           <li tabIndex="0" onClick={() => { navigate('/gallery'); setMenuOpen(false) }}>OUR_WORK</li>
-
+          <li tabIndex="0" onClick={() => { navigate('/service'); setMenuOpen(false) }}>SERVICE</li>
         { !token&& <li tabIndex="0" onClick={() => { navigate('/contact'); setMenuOpen(false) }}>CONTACT</li>}
           {token &&  <li tabIndex="0" onClick={() => { navigate('/Workers'); setMenuOpen(false) }}>ADMIN</li>}
 
