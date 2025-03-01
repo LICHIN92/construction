@@ -6,7 +6,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { useNavigate } from 'react-router-dom';
 import { clearUserData } from '../../redux/userSlice';
-import Modall from '../../Components/modal/modall';
+import Modall from '../../Components/modal/Modall';
  
 
 const Workers = () => {

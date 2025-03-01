@@ -18,9 +18,7 @@ const Service = () => {
         { img: Paint, work: "Paint Work" }
 
     ]
-    useEffect(()=>{
-        gsap.fromTo(".service", { x: -650 ,duration:20},{ x: 0 })
-    })
+  
     useEffect(()=>{
         gsap.to(".serviceCard",{duration:.5,opacity:.1,
             rotation: 360,
