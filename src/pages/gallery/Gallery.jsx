@@ -60,7 +60,7 @@ const Gallery = () => {
     <div className="galleryContainer">
       {openImage && user?.Admin && <AddImage setImageOpen={setImageOpen} />}
       <div className="galleryHead">
-        <h3>Our Happy Clients & Completed Works</h3>
+        <h3> Completed Works</h3>
         {token && <span onClick={() => setImageOpen(true)}>Add Images</span>}
       </div>
       <div className="gallery">
@@ -74,7 +74,7 @@ const Gallery = () => {
             <div className="overlay ">
               <span className="">place: {file.place}</span>
             </div>
-            <span className="text-white">work : {file.work}</span>
+            <span className="text-white vv"> {file.work}</span>
             {token &&
               <img className="closeq" src={close} alt="" onClick={() => { deleteImg(file._id) }} />
             }

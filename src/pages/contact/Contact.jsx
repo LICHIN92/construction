@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import Alertt from '../../Components/alert/Alertt'
 import { CiMobile1 } from 'react-icons/ci'
 import { MdOutlineMailOutline } from "react-icons/md";
+import WhatsApp from '../../Components/whatsApp/WhatsApp'
 
 const Contact = () => {
     const navigate = useNavigate()
@@ -97,6 +98,7 @@ const Contact = () => {
                 </form>
 
             </div>
+            <WhatsApp/>
         </div>
     )
 }
