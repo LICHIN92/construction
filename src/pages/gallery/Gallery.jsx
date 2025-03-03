@@ -5,6 +5,7 @@ import axios from "axios";
 import $ from "jquery";
 import close from '../../assets/img/close.svg'
 import { useSelector } from "react-redux";
+import Modall from "../../Components/modal/Modall";
 const Gallery = () => {
   const [openImage, setImageOpen] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -12,6 +13,8 @@ const Gallery = () => {
   const token = localStorage.getItem('token')
   const [refresh, seteRfresh] = useState(false)
   const { user } = useSelector(state => state.user?.user)
+  const [modal, setModal] = useState(false)
+  const [id, setId] = useState()
   // console.log(user);
 
   useEffect(() => {
@@ -42,7 +45,7 @@ const Gallery = () => {
     )
   }, [])
   const deleteImg = async (id) => {
-    alert(id)
+    // alert(id)
     try {
       const deletePic = await axios.delete(`${apiUrl}/delete/${id}`
         , {
@@ -57,8 +60,13 @@ const Gallery = () => {
     }
   }
   return (
+
     <div className="galleryContainer">
       {openImage && user?.Admin && <AddImage setImageOpen={setImageOpen} />}
+      {modal &&
+        <Modall setDelete={setModal} title={'Delete Confirmation!'} Deletemsg={deleteImg} id={id} msg={'Do you want to delete this image ?'}/>
+      }
+
       <div className="galleryHead">
         <h3> Completed Works</h3>
         {token && <span onClick={() => setImageOpen(true)}>Add Images</span>}
@@ -76,7 +84,13 @@ const Gallery = () => {
             </div>
             <span className="text-white vv"> {file.work}</span>
             {token &&
-              <img className="closeq" src={close} alt="" onClick={() => { deleteImg(file._id) }} />
+              <img className="closeq" src={close} alt="" onClick={() =>
+              //  { deleteImg(file._id) }
+              {
+                setId(file._id)
+                setModal(true)
+              }
+              } />
             }
           </div>
         ))}

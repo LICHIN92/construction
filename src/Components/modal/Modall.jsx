@@ -3,14 +3,14 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal';
 const Modall = ({Deletemsg,title,msg,setDelete,id}) => {
     return (
-        <div className='z-100 position-absolute w-100'>
+        <div className='z-10 position-absolute w-100 mt-3'>
             <div
                 className="modal show"
                 style={{ display: 'block', position: 'initial' }}
             >
                 <Modal.Dialog>
-                    <Modal.Header >
-                        <Modal.Title> {title}</Modal.Title>
+                    <Modal.Header className='text-red-600'>
+                        <Modal.Title > {title}</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>

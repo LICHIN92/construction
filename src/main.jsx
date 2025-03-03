@@ -19,6 +19,7 @@ import Contacted from './pages/contacted/Contacted.jsx';
 import WorkPage from './pages/WorkPage/WorkPage.jsx';
 import ListWorkers from './pages/WorkersList/ListWorkers.jsx';
 import Service from './pages/services/Service.jsx';
+import WorkService from './pages/Works/WorkService.jsx';
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path:'/service',
         element:<Service/>
+      },
+      {
+        path:'/service/:work',
+        element:<WorkService/>
       }
     ]
   }

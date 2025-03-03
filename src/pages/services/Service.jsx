@@ -7,8 +7,10 @@ import Cement from '../../assets/img/plasterer-hand-rubber-glove-using-wooden-tr
 import Paint from '../../assets/img/paint.avif'
 import putty from '../../assets/img/putty.avif'
 import gsap from 'gsap'
+import { useNavigate } from 'react-router-dom'
 
 const Service = () => {
+    const navigate=useNavigate()
     const data = [
         { img: carpenter, work: "Carpentry" },
         { img: plumber, work: "plumbing" },
@@ -16,7 +18,6 @@ const Service = () => {
         { img: putty, work: "Putty Plastering" },
         { img: Cement, work: "Cement Plastering" },
         { img: Paint, work: "Paint Work" }
-
     ]
     useEffect(()=>{
         gsap.fromTo(".service", { x: -650 ,duration:20},{ x: 0 })
@@ -39,7 +40,9 @@ const Service = () => {
             </div>
             <div className='flex flex-row gap-2 md:gap-4 justify-content-center flex-wrap'>
                 {data.map((file, index) => (
-                    <div key={index} className="serviceCard  bg-slate-500 ">
+                    <div key={index} className="serviceCard  bg-slate-500 " 
+                    // onClick={()=>navigate(`/service/${file.work}`)}
+                     >
                         <img className='workImages' src={file.img} alt={file.work} />
                         <h4 className='capitalize ps-1 text-center'>{file.work}</h4>
                     </div>
