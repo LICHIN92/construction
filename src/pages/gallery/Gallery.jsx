@@ -6,6 +6,8 @@ import $ from "jquery";
 import close from '../../assets/img/close.svg'
 import { useSelector } from "react-redux";
 import Modall from "../../Components/modal/Modall";
+import { MdLocationOn } from "react-icons/md";
+import Details from "../../Components/Details/Details";
 const Gallery = () => {
   const [openImage, setImageOpen] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -15,6 +17,8 @@ const Gallery = () => {
   const { user } = useSelector(state => state.user?.user)
   const [modal, setModal] = useState(false)
   const [id, setId] = useState()
+  const [details,setDetails]=useState(false)
+  const [selectedDetails, setSelectedDetails] = useState(null);
   // console.log(user);
 
   useEffect(() => {
@@ -64,12 +68,14 @@ const Gallery = () => {
     <div className="galleryContainer">
       {openImage && user?.Admin && <AddImage setImageOpen={setImageOpen} />}
       {modal &&
-        <Modall setDelete={setModal} title={'Delete Confirmation!'} Deletemsg={deleteImg} id={id} msg={'Do you want to delete this image ?'}/>
+        <Modall setDelete={setModal} title={'Delete Confirmation!'} Deletemsg={deleteImg} id={id} msg={'Do you want to delete this image ?'} />
       }
+
+   {details && <Details close={setDetails} detail={selectedDetails}/>}  
 
       <div className="galleryHead">
         <h3> Completed Works</h3>
-        {token && <span onClick={() => setImageOpen(true)}>Add Images</span>}
+        {token && <span className="cursor-pointer hover:text-green-800" onClick={() => setImageOpen(true)}>Add Images</span>}
       </div>
       <div className="gallery">
         {pics.map((file, index) => (
@@ -78,9 +84,13 @@ const Gallery = () => {
               className="workimg"
               src={file.pics[0] || "https://via.placeholder.com/150"}
               alt={`Client ${index}`}
+              onClick={()=>{setSelectedDetails(file), setDetails(true)}}
             />
             <div className="overlay ">
-              <span className="">place: {file.place}</span>
+              <span className="">
+                <MdLocationOn className="fill-red-500" />
+
+                {file.place}</span>
             </div>
             <span className="text-white vv"> {file.work}</span>
             {token &&

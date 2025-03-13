@@ -17,9 +17,11 @@
 }
 .imageForm{
     background-color: rgb(182, 180, 177);
-    width: 80vw;
+    min-width: 50vw;
+    min-height:60vh ;
     padding: 5px;
     position: relative;
+    overflow-y: scroll;
     /* height: 80vh; */
     /* display: flex;
     justify-content: center;
@@ -42,4 +44,9 @@
     width: 22px;
     right:15px;
     background-color: aliceblue;
+}
+@media(max-width:550px){
+ .imageForm{
+    width: 95vw;
+ }
 }

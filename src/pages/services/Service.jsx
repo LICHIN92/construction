@@ -41,7 +41,7 @@ const Service = () => {
             <div className='flex flex-row gap-2 md:gap-4 justify-content-center flex-wrap'>
                 {data.map((file, index) => (
                     <div key={index} className="serviceCard  bg-slate-500 " 
-                    // onClick={()=>navigate(`/service/${file.work}`)}
+                    onClick={()=>navigate(`/service/${file.work}`)}
                      >
                         <img className='workImages' src={file.img} alt={file.work} />
                         <h4 className='capitalize ps-1 text-center'>{file.work}</h4>

@@ -16,7 +16,8 @@ const AddImage = ({ setImageOpen }) => {
     const [selectedFile, setSelectedFile] = useState([])
     const schema = yup.object({
         work: yup.string().required(),
-        place: yup.string().required()
+        place: yup.string().required(),
+        details:yup.string().optional()
     })
     const apiUrl = import.meta.env.VITE_API_URL;
     const token = localStorage.getItem('token')
@@ -43,6 +44,8 @@ const AddImage = ({ setImageOpen }) => {
 
     const [message, setMessage] = useState(null)
     const submit = async (data) => {
+        console.log(data);
+        
         if (selectedFile.length === 0) {
             alert('Please select an image');
             return;
@@ -51,6 +54,8 @@ const AddImage = ({ setImageOpen }) => {
         const formData = new FormData();
         formData.append('work', data.work);
         formData.append('place', data.place);
+        formData.append('details', data.details || "");
+
         selectedFile.forEach((file) => {
             formData.append('pic', file); // Append each file
         });
@@ -83,7 +88,7 @@ const AddImage = ({ setImageOpen }) => {
     const remover = (index) => {
         setSelectedFile((prev) => prev.filter((_, i) => i !== index));
     };
-    const weburl="https://construction-eosin.vercel.app/contact"
+    const weburl = "https://construction-eosin.vercel.app/contact"
     return (
         <div className='uploadImage'>
             {alerts && <Alertt message={message} err={false} heading={'Success !'} />}
@@ -92,13 +97,17 @@ const AddImage = ({ setImageOpen }) => {
                 <QRCode value={weburl} size={200} />
             </div> */}
             <div className='imageForm '>
-            <img className='formClose' onClick={()=>setImageOpen(false)} src={close} alt="" />
 
-                <form onSubmit={handleSubmit(submit)} className='flex flex-col justify-center items-center gap-4'>
-                    <input type="file" className='hidden' accept='image/*' max={MAX_FILES} multiple onChange={handleChange} ref={fileInputRef} />
+                <img className='formClose' onClick={() => setImageOpen(false)} src={close} alt="" />
+
+                <form onSubmit={handleSubmit(submit)} className='flex flex-col justify-center items-center gap-3'>
+                    <h2 className='mt-4'>Add Completed Work</h2>
 
                     <div className='flex gap-2'>
+                        <input type="file" className='hidden' accept='image/*' max={MAX_FILES} multiple onChange={handleChange} ref={fileInputRef} />
+
                         {selectedFile?.length > 0 && <div className='flex flex-wrap gap-3'>
+
                             {selectedFile.map((file, index) => (
                                 <div className='relative flex flex-col justify-center flex-wrap'>
                                     <img className='selected' key={index} src={URL.createObjectURL(file)} alt={`preview-${index}`} />
@@ -116,6 +125,10 @@ const AddImage = ({ setImageOpen }) => {
                     <div className="flex flex-col">
                         <label htmlFor="">Place</label>
                         <input type="text" {...register('place')} />
+                    </div>
+                    <div className="flex flex-col">
+                        <label htmlFor="dd">Details</label>
+                        <textarea name="" id="dd" {...register('details')} cols='20' rows="10"></textarea>
                     </div>
                     <button className='p-1 w-auto  h-9 text-clip'>{wait ? 'uploading...' : 'upload'}</button>
                 </form>
