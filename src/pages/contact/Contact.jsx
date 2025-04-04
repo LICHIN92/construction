@@ -47,7 +47,7 @@ const Contact = () => {
             <div className='enquiries'>
                 {/* <span className='text-white'>Enquiry</span> */}
                 <span className='flex items-center gap-1'> <CiMobile1 className='' /> <span>+918086200861</span></span>
-                <span className='flex items-center gap-1'><MdOutlineMailOutline /> lichinchandran143@gmail.com</span>
+                <span className='flex items-center gap-1' onClick={()=>window.location.href='mailto:lccinfoconstruct@gmail.com'}><MdOutlineMailOutline /> lccinfoconstruct@gmail.com</span>
             </div>
             {
                 success &&

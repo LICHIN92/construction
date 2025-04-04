@@ -34,7 +34,7 @@ const NavBaar = () => {
 
       <div className='logooo'>
 
-        <h3>NK Construction</h3>
+        <h3>LC Construction</h3>
         <h6>construction solution</h6>
       </div>
       <div className='ulli'>

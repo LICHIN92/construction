@@ -46,7 +46,7 @@ const Workers = () => {
   const downloadPDF = () => {
     const doc = new jsPDF();
 
-    doc.text("NK Constructions-Works List", 14, 10);
+    doc.text("LC Constructions-Works List", 14, 10);
 
     autoTable(doc, {
       startY: 20,
