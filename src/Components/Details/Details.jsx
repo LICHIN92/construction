@@ -16,8 +16,8 @@ const Details = ({ close, detail }) => {
                     <h4>About Work:</h4>
                     <p className='workDetails'>{detail.details}</p>
                 </div>
-                <div className="flex justify-center absolute bottom-0 right-1/2">
-                    <span className='bg-orange-500 font-extralight' onClick={() => close(false)}>close</span>
+                <div className="flex justify-center  bottom-0 right-1/2">
+                    <span className='bg-orange-500 px-1 cursor-default font-extralight' onClick={() => close(false)}>close</span>
 
                 </div>
             </div>
