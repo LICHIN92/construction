@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './list.css'
 import axios from 'axios'
-import Modall from '../../Components/modal/modall'
+import Modall from '../../Components/modal/Modall'
 import Alertt from '../../Components/alert/Alertt'
 const ListWorkers = () => {
     const [contacts, setContacts] = useState([])
