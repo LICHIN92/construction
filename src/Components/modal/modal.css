@@ -51,8 +51,7 @@
         width: 400px;
         top: 150px;
         left: 12%;
-    
-    }
+        }
 }
 @media(max-width:513px){
     .dial {
