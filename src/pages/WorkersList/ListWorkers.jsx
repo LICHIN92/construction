@@ -123,7 +123,7 @@ const ListWorkers = () => {
                             <tbody>
 
                                 {list.map((worker, index) =>
-                                    <tr key={index}>
+                                    <tr key={index}> 
                                         <td className='w-1'>{index + 1}</td>
                                         <td>{worker.FullName}</td>
                                         <td>{worker.Mobile}</td>
