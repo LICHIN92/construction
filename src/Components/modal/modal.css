@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.mdConatiner {
+    height: 150vh;
+    width: 100vw;
+    background-color: rgba(37, 35, 35, 0.1);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal {
+    /* height: 270px;
+    width: 460px; */
+    /* position: fixed; */
+    /* background-color: cadetblue; */
+    /* top: 500px;
+    height: auto;
+    overflow: hidden; */
+    /* position: absolute; */
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; */
+}
+
+.dial {
+    position: fixed;
+    width: 400px;
+    top: 150px;
+    left: 30%;
+
+}
+@media(max-width:813px){
+    .dial {
+        position: fixed;
+        width: 400px;
+        top: 150px;
+        left: 20%;
+    
+    }
+}
+@media(max-width:585px){
+    .dial {
+        position: fixed;
+        width: 400px;
+        top: 150px;
+        left: 12%;
+    
+    }
+}
+@media(max-width:513px){
+    .dial {
+        position: fixed;
+        max-width: 97vw;
+        top: 150px;
+        left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: antiquewhite;
+    }
+}

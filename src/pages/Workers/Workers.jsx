@@ -109,7 +109,8 @@ const Workers = () => {
   return (
     <div className="workers_container">
       {deleteing &&
-       <Modall msg={'Are you sure?'} title={'Delete Confirmation'} setDelete={SetDelete} Deletemsg={DeleteMsg} id={deleteId}
+       <Modall msg={'Are you sure?'} title={'Delete Confirmation'} setDelete={SetDelete}
+        Deletemsg={DeleteMsg} id={deleteId}
       />}
       <div className='flex  justify-between align-items-center  sm:fs-2 md:px-2'>
         <div className='flex flex-col-reverse gap-1 w-35 pt-1  m:justify-around'>

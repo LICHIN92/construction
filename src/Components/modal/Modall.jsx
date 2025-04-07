@@ -1,14 +1,15 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal';
+import './modal.css'
 const Modall = ({Deletemsg,title,msg,setDelete,id}) => {
     return (
-        <div className='z-10 position-absolute w-100 mt-3'>
+        <div className='z-10  w-100 top-0 mdConatiner '>
             <div
-                className="modal show"
+                className="modal show "
                 style={{ display: 'block', position: 'initial' }}
             >
-                <Modal.Dialog>
+                <Modal.Dialog className=' dial' >
                     <Modal.Header className='text-red-600'>
                         <Modal.Title > {title}</Modal.Title>
                     </Modal.Header>

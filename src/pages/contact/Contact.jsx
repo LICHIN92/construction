@@ -82,7 +82,7 @@ const Contact = () => {
                             <option value="Putty Plastering">Putty Plastering</option>
                             <option value="Tile">Tile Flooring</option>
                             <option value="Paint">Paint Work</option>
-
+                            <option value="Marble">Marble Flooring</option>
                         </select>
                         {errors.Work && <small>{errors.Work.message}</small>}
 

@@ -138,6 +138,7 @@ const Login = () => {
                                 <option value="Cement Plaster">Cement Plaster</option>
                                 <option value="Putty Plaster">Putty Plaster</option>
                                 <option value="Tiler">Tile</option>
+                                <option value="Marble">Marble</option>
                             </select>
                             <label htmlFor="">Your Job</label>
                             {errors.Job && <small>{errors.Job.message}</small>}

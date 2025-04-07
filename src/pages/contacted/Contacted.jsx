@@ -72,6 +72,9 @@ const Contacted = () => {
                 <span onClick={() => findWork('Paint')}>Paint
                     <small className='bg-white'>{contacts.Paint ? contacts.Paint : "0"}</small>
                 </span>
+                <span onClick={() => findWork('Marble')}>Marble
+                    <small className='bg-white'>{contacts.Marble ? contacts.Marble : "0"}</small>
+                </span>
             </dvi>
         </div>
     )
