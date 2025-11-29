@@ -113,7 +113,7 @@ const Workers = () => {
         Deletemsg={DeleteMsg} id={deleteId}
       />}
       <div className='flex  justify-between align-items-center  sm:fs-2 md:px-2'>
-        <div className='flex flex-col-reverse gap-1 w-35 pt-1  m:justify-around'>
+        <div className='flex flex-col-reverse gap-1 w-35 pt-1  m:justify-around  sm:flex-col lg:flex-col-reverse'>
           {user?.Admin && <span className=' text-green-200 cursor-default px-1 rounded-full ms-1 bg-gray-500' onClick={() => setValues(!values)}>Contact</span>}
           {user?.Admin && <span className=' text-green-600 cursor-default px-1 rounded-full ms-1 bg-gray-600' onClick={() => { navigate('/WorkersList'), setValues('') }}>Workers</span>}
 
@@ -191,7 +191,7 @@ const Workers = () => {
         </table>
         )
       ) : (
-        <p>No data available</p>
+        <p className='px-2'>No data available</p>
       )}
     </div>
   );
